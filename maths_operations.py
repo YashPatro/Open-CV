@@ -1,5 +1,7 @@
+#18/04/25
+import numpy as np
 import cv2
-
+'''
 
 winter = cv2.imread('winter_back.jpg')
 planet = cv2.imread('planet_back.jpg')
@@ -18,4 +20,33 @@ cv2.imshow('Resuze pikachu',rp)
 cv2.waitKey(0)
 cv2.imshow('Resoze pikachu',p)
 cv2.waitKey(0)
+cv2.destroyAllWindows()'''
+
+clr1 = np.array([177,235,52])
+clr2 = np.array([235,52,119])
+#adding
+'''
+img1 = np.full((300,300,3),clr1,dtype=np.uint8)
+img2 = np.full((300,300,3),clr2,dtype=np.uint8)
+add1 = cv2.add(img1,img2)
+
+addedImg = img1+img2
+clrMix = np.concatenate((img1,img2,add1,addedImg),axis = 1)
+cv2.imshow('All THe Colours', clrMix)
+cv2.waitKey(0)
 cv2.destroyAllWindows()
+'''
+
+#subtrating
+
+img1 = np.full((300,300,3),clr1,dtype=np.uint8)
+img2 = np.full((300,300,3),clr2,dtype=np.uint8)
+CvTWOsubtract = cv2.subtract(img1,img2)
+
+subtractImg = img1-img2
+clrMix = np.concatenate((img1,img2,CvTWOsubtract,subtractImg),axis = 1)
+cv2.imshow('All THe Colours', clrMix)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+
