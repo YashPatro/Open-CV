@@ -32,11 +32,13 @@ def vidGenerate():
     file = 'Collage_Player.avi'
     os.chdir('C:\\Users\\Administrator\\Desktop\\open_cv\\images')
     l = []
+    
     for i in os.listdir('.'):
         l.append(i)
     frame = cv2.imread(os.path.join('.',l[0]))
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     height,width,layers = frame.shape
-    video = cv2.VideoWriter(file,0,1,(width,height))
+    video = cv2.VideoWriter(file,fourcc,1,(width,height))
     for i in l:
         video.write(cv2.imread(os.path.join('.',i)))
     cv2.destroyAllWindows()
