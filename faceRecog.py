@@ -1,3 +1,4 @@
+##21/06/25 and 28/06/25
 import cv2
 
 import numpy as np
@@ -40,7 +41,13 @@ while True:
         face = grey[y:y+h,x:x+w]
         faceResize = cv2.resize(face,(width,height))    
         prediction = recogniser.predict(faceResize)
+        
         if prediction[1]<100:
             cv2.putText(frame,f'{d1[prediction[0]]} - {prediction[1]:.0f}',(x+30,y-10),cv2.FONT_HERSHEY_PLAIN,1,(0,255,0),2)
         else:
             cv2.putText(frame,'Unknown',(x+30,y-10),cv2.FONT_HERSHEY_PLAIN,1,(0,255,0),2)
+    cv2.imshow('frame',frame)
+    if cv2.waitKey(10) == 27:
+        break
+cam.release()
+cv2.destroyAllWindows()
